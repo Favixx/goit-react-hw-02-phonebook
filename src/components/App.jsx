@@ -29,14 +29,12 @@ export class App extends Component {
   handleFilterChange = e => {
     this.setState({ filter: e.target.value });
   };
-
   render() {
     const { contacts, filter } = this.state;
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-
-    return (
+      );
+      return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm addContact={this.addContact} />
@@ -44,7 +42,7 @@ export class App extends Component {
         <h2>Contacts</h2>
         <Filter filter={filter} handleFilterChange={this.handleFilterChange} />
         <ContactList
-          contacts={filteredContacts}
+          filteredContacts={filteredContacts}
           filter={filter}
           deleteContact={this.deleteContact}
         />
