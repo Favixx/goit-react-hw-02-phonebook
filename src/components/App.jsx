@@ -43,7 +43,6 @@ export class App extends Component {
         <Filter filter={filter} handleFilterChange={this.handleFilterChange} />
         <ContactList
           filteredContacts={filteredContacts}
-          filter={filter}
           deleteContact={this.deleteContact}
         />
       </div>
