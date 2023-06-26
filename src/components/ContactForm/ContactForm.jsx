@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import styles from "./ContactForm.module.css"
+import PropTypes from "prop-types"
 export default class ContactForm extends Component {
     state = {
         name: '',
         number: ''
     };
-
+    static propTypes = {
+        addContact: PropTypes.func.isRequired,
+    };
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
@@ -30,7 +34,7 @@ export default class ContactForm extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className={styles.form}>
                     <label>
                         Name
                         <input
