@@ -1,15 +1,18 @@
-import React, { Component } from 'react'
-import { v4 as uuidv4 } from 'uuid'
-import styles from "./ContactForm.module.css"
-import PropTypes from "prop-types"
+import React, { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
+import styles from "./ContactForm.module.css";
+import PropTypes from "prop-types";
+
 export default class ContactForm extends Component {
     state = {
-        name: '',
-        number: ''
+        name: "",
+        number: ""
     };
+
     static propTypes = {
-        addContact: PropTypes.func.isRequired,
+        addContact: PropTypes.func.isRequired
     };
+
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
@@ -28,10 +31,12 @@ export default class ContactForm extends Component {
 
         addContact(newContact);
 
-        this.setState({ name: '', number: '' });
+        this.setState({ name: "", number: "" });
     };
 
     render() {
+        const { name, number } = this.state;
+
         return (
             <div>
                 <form onSubmit={this.handleSubmit} className={styles.form}>
