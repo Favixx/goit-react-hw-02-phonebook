@@ -13,12 +13,19 @@ export class App extends Component {
     filter: ''
   };
 
-  addContact = newContact => {
+  addContact = ({ newContact, name, number }) => {
+    const isExist = this.state.contacts.some(
+      el => el.name.toLowerCase() === name.toLowerCase() || el.number === number
+    );
+
+    if (isExist) {
+      alert('Contact already exists');
+      return;
+    }
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact]
     }));
   };
-
   deleteContact = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId)
